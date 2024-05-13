@@ -6,10 +6,12 @@ import { PrismaService } from './prisma/prisma.service';
 import { ValidationService } from './validation/validation.service';
 import { APP_FILTER } from '@nestjs/core';
 import { ErrorFilter } from './error/error.filter';
+import { JwtModule } from '@nestjs/jwt';
 
 @Global()
 @Module({
   imports: [
+    JwtModule.register({ global: true }),
     ConfigModule.forRoot({ isGlobal: true }),
     WinstonModule.forRoot({
       format: winston.format.json(),
